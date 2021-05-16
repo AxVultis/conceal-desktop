@@ -3015,19 +3015,19 @@ text-align: left;
             <bool>true</bool>
            </property>
            <property name="itemsExpandable">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sortingEnabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="expandsOnDoubleClick">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <attribute name="headerCascadingSectionResizes">
             <bool>false</bool>
            </attribute>
            <attribute name="headerShowSortIndicator" stdset="0">
-            <bool>true</bool>
+            <bool>false</bool>
            </attribute>
            <attribute name="headerStretchLastSection">
             <bool>true</bool>
@@ -4547,6 +4547,9 @@ font-size: 10pt;</string>
                   <bool>true</bool>
                  </property>
                  <property name="itemsExpandable">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sortingEnabled">
                   <bool>false</bool>
                  </property>
                  <property name="headerHidden">

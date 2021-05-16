@@ -315,12 +315,17 @@ namespace WalletGui
         return "Unconfirmed";
       }
 
-      quint64 confirmations = NodeAdapter::instance().getLastKnownBlockHeight() - transactionHeight + 1;
+      quint64 confirmations =
+          NodeAdapter::instance().getLastKnownBlockHeight() - transactionHeight + 1;
 
       if (confirmations >= 10)
       {
-        //return NodeAdapter::instance().getLastKnownBlockHeight();
         return "Confirmed";
+      }
+
+      if (confirmations > 1 && confirmations < 10)
+      {
+        return "Pending";
       }
     }
 
