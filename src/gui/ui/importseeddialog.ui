@@ -100,7 +100,7 @@ font-weight: bold;</string>
          <string notr="true">color: #ddd;border-right: 0px;</string>
         </property>
         <property name="text">
-         <string>Recreate your wallet with the 25 word mnemonic seed</string>
+         <string>Recreate your wallet with the 25 words mnemonic seed</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>

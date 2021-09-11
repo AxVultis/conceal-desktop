@@ -1810,7 +1810,7 @@ border: none;</string>
                  <x>0</x>
                  <y>0</y>
                  <width>722</width>
-                 <height>15026</height>
+                 <height>15164</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -2689,7 +2689,7 @@ Public License instead of this License.  But first, please read
                  <x>0</x>
                  <y>0</y>
                  <width>473</width>
-                 <height>245</height>
+                 <height>299</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -4940,7 +4940,7 @@ color: orange;
                <string>Medium</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
@@ -4976,7 +4976,7 @@ color: orange;
                <string>Twitter</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
@@ -5025,7 +5025,7 @@ color: orange;
                <string>Wiki</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
@@ -5097,7 +5097,7 @@ color: orange;
                <string>Website</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
@@ -5169,7 +5169,7 @@ color: orange;
                <string>GitHub</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
@@ -5205,7 +5205,7 @@ color: orange;
                <string>Telegram</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
@@ -5409,7 +5409,7 @@ color: orange;
                <string>STEX</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
@@ -5445,7 +5445,7 @@ color: orange;
                <string>Reddit</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
@@ -5602,7 +5602,7 @@ color: orange;
                <string>TradeOgre</string>
               </property>
               <property name="type" stdset="0">
-               <string>sm</string>
+               <string notr="true">sm</string>
               </property>
              </widget>
             </item>
