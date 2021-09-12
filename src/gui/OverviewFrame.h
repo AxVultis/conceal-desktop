@@ -159,6 +159,8 @@ private:
   Q_SLOT void showDepositDetails(const QModelIndex &_index);
   Q_SLOT void timeChanged(int _value);
   Q_SLOT void withdrawClicked();
+  Q_SLOT void withdrawAllClicked();
+  Q_SLOT void currentDepositChanged(const QModelIndex& _index);
   Q_SLOT void importSeedButtonClicked();
   Q_SLOT void openWalletButtonClicked();
   Q_SLOT void importTrackingButtonClicked();

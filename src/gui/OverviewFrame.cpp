@@ -225,9 +225,6 @@ namespace WalletGui
     m_ui->m_transactionsView->header()->moveSection(0, 1);
     m_ui->m_transactionsView->header()->resizeSection(TransactionsModel::COLUMN_HASH, 300);
 
-    m_ui->m_depositView->setModel(m_depositModel.data());
-    m_ui->m_messagesView->setModel(m_visibleMessagesModel.data());
-
     m_ui->m_timeSpin->setSuffix(QString(" %1").arg(tr("Month(s)")));
     m_ui->m_timeSpin->setMaximum(12);
     timeChanged(1);
@@ -244,12 +241,19 @@ namespace WalletGui
 
     m_ui->m_amountSpin->setSuffix(" " + CurrencyAdapter::instance().getCurrencyTicker().toUpper());
 
+    m_ui->m_messagesView->setModel(m_visibleMessagesModel.data());
     m_ui->m_messagesView->header()->resizeSection(MessagesModel::COLUMN_DATE, 180);
 
-    m_ui->m_depositView->header()->resizeSection(DepositModel::COLUMN_STATE, 75);
+    m_ui->m_depositView->setModel(m_depositModel.data());
+    m_ui->m_depositView->header()->resizeSection(0, 100);
     m_ui->m_depositView->header()->resizeSection(1, 100);
-    m_ui->m_depositView->header()->resizeSection(2, 200);
-    m_ui->m_depositView->header()->resizeSection(3, 50);
+    m_ui->m_depositView->header()->resizeSection(2, 150);
+    m_ui->m_depositView->header()->resizeSection(3, 200);
+    m_ui->m_depositView->header()->resizeSection(4, 100);
+    m_ui->m_depositView->header()->moveSection(2, 4);
+    connect(m_ui->m_depositView->selectionModel(), &QItemSelectionModel::currentChanged, this,
+            &OverviewFrame::currentDepositChanged);
+    m_ui->b1_withdrawButton->setEnabled(false);
 
 #ifdef HAVE_CHART
     m_chartView = new QChartView();
@@ -1647,7 +1651,21 @@ namespace WalletGui
 
   void OverviewFrame::withdrawClicked()
   {
-    QModelIndexList unlockedDepositIndexList = DepositModel::instance().match(DepositModel::instance().index(0, 0), DepositModel::ROLE_STATE, DepositModel::STATE_UNLOCKED, -1);
+    LoggerAdapter::instance().log("Withdraw deposit");
+    QVector<CryptoNote::DepositId> depositId;
+    depositId.append(m_ui->m_depositView->currentIndex().row());
+    WalletAdapter::instance().withdrawUnlockedDeposits(
+        depositId, CurrencyAdapter::instance().getMinimumFeeBanking());
+    updatePortfolio();
+    LoggerAdapter::instance().log("Withdraw deposit done");
+  }
+
+  void OverviewFrame::withdrawAllClicked()
+  {
+    LoggerAdapter::instance().log("Withdraw all deposits");
+    QModelIndexList unlockedDepositIndexList =
+        DepositModel::instance().match(DepositModel::instance().index(0, 0),
+                                       DepositModel::ROLE_STATE, DepositModel::STATE_UNLOCKED, -1);
     if (unlockedDepositIndexList.isEmpty())
     {
       return;
@@ -1659,9 +1677,12 @@ namespace WalletGui
       depositIds.append(index.row());
     }
 
+    LoggerAdapter::instance().log("unlocked deposits: " + std::to_string(depositIds.size()));
+
     WalletAdapter::instance().withdrawUnlockedDeposits(
         depositIds, CurrencyAdapter::instance().getMinimumFeeBanking());
     updatePortfolio();
+    LoggerAdapter::instance().log("Withdraw all deposits done");
   }
 
   void OverviewFrame::importSeedButtonClicked()
@@ -2206,6 +2227,12 @@ namespace WalletGui
       refreshDataTimer.start(REFRESH_INTERVAL);
       m_ui->b2_autoRefreshDataButton->setText(tr("CLICK TO DISABLE"));
     }
+  }
+
+  void OverviewFrame::currentDepositChanged(const QModelIndex &_index)
+  {
+    m_ui->b1_withdrawButton->setEnabled(_index.isValid() && _index.data(DepositModel::ROLE_STATE) !=
+                                                                DepositModel::STATE_SPENT);
   }
 
 }  // namespace WalletGui

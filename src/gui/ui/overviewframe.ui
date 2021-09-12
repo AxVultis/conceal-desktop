@@ -2970,7 +2970,7 @@ font-weight:bold;</string>
           <number>12</number>
          </property>
          <item>
-          <widget class="QGroupBox" name="horizontalGroupBox">
+          <widget class="QGroupBox" name="horizontalGroupBox_4">
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
            </property>
@@ -5859,11 +5859,26 @@ font-size: 18px;
               <property name="rootIsDecorated">
                <bool>false</bool>
               </property>
+              <property name="uniformRowHeights">
+               <bool>true</bool>
+              </property>
+              <property name="itemsExpandable">
+               <bool>true</bool>
+              </property>
               <property name="sortingEnabled">
                <bool>true</bool>
               </property>
+              <attribute name="headerMinimumSectionSize">
+               <number>60</number>
+              </attribute>
+              <attribute name="headerDefaultSectionSize">
+               <number>150</number>
+              </attribute>
               <attribute name="headerShowSortIndicator" stdset="0">
-               <bool>false</bool>
+               <bool>true</bool>
+              </attribute>
+              <attribute name="headerStretchLastSection">
+               <bool>true</bool>
               </attribute>
              </widget>
             </item>
@@ -5922,11 +5937,41 @@ font-size: 18px;
                    <family>Poppins</family>
                   </font>
                  </property>
+                 <property name="text">
+                  <string>Withdraw Deposit</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="b1_withdrawAllButton">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>220</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>220</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Poppins</family>
+                  </font>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">/* This button style is handled automatically by OverviewFrame:setStyles() (in OverviewFrame.cpp) */</string>
                  </property>
                  <property name="text">
-                  <string>Withdraw Deposit</string>
+                  <string>Withdraw All Deposits</string>
                  </property>
                 </widget>
                </item>
@@ -9567,8 +9612,6 @@ color: orange;
      <zorder>headerBox</zorder>
      <zorder>aboutBox</zorder>
      <zorder>horizontalLine</zorder>
-     <zorder>addressBookBox</zorder>
-     <zorder>bankingBox</zorder>
      <zorder>newMessageBox</zorder>
      <zorder>sendBox</zorder>
      <zorder>settingsBox</zorder>
@@ -9576,6 +9619,8 @@ color: orange;
      <zorder>messageBox</zorder>
      <zorder>transactionsBox</zorder>
      <zorder>overviewBox</zorder>
+     <zorder>addressBookBox</zorder>
+     <zorder>bankingBox</zorder>
     </widget>
    </item>
   </layout>
@@ -9937,10 +9982,10 @@ color: orange;
    </hints>
   </connection>
   <connection>
-   <sender>b1_withdrawButton</sender>
+   <sender>b1_withdrawAllButton</sender>
    <signal>clicked()</signal>
    <receiver>OverviewFrame</receiver>
-   <slot>withdrawClicked()</slot>
+   <slot>withdrawAllClicked()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>995</x>
@@ -10816,6 +10861,22 @@ color: orange;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>b1_withdrawButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OverviewFrame</receiver>
+   <slot>withdrawClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>868</x>
+     <y>533</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>634</x>
+     <y>324</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newTransferClicked()</slot>
@@ -10848,6 +10909,7 @@ color: orange;
   <slot>showDepositDetails(QModelIndex)</slot>
   <slot>addressBookMessageClicked()</slot>
   <slot>withdrawClicked()</slot>
+  <slot>withdrawAllClicked()</slot>
   <slot>timeChanged(int)</slot>
   <slot>depositParamsChanged()</slot>
   <slot>importSeedButtonClicked()</slot>

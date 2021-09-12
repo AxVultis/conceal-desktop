@@ -20,8 +20,14 @@ DepositListModel::DepositListModel() : QSortFilterProxyModel() {
 DepositListModel::~DepositListModel() {
 }
 
-bool DepositListModel::filterAcceptsColumn(int _sourceColumn, const QModelIndex& _sourceParent) const {
-  return _sourceColumn == DepositModel::COLUMN_STATE || _sourceColumn == DepositModel::COLUMN_AMOUNT || _sourceColumn == DepositModel::COLUMN_TYPE || _sourceColumn == DepositModel::COLUMN_UNLOCK_TIME;
+bool DepositListModel::filterAcceptsColumn(int _sourceColumn,
+                                           const QModelIndex &_sourceParent) const
+{
+  return _sourceColumn == DepositModel::COLUMN_STATE ||
+         _sourceColumn == DepositModel::COLUMN_AMOUNT ||
+         _sourceColumn == DepositModel::COLUMN_TYPE ||
+         _sourceColumn == DepositModel::COLUMN_UNLOCK_TIME ||
+         _sourceColumn == DepositModel::COLUMN_UNLOCK_HEIGHT;
 }
 
 bool DepositListModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
