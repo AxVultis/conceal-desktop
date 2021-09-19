@@ -902,6 +902,10 @@ namespace WalletGui
     m_ui->darkness->hide();
     updatePortfolio();
     m_ui->m_myConcealWalletTitle->setText(tr("CONCEAL.NETWORK"));
+    if (Settings::instance().isTestnet())
+    {
+      m_ui->m_myConcealWalletTitle->setText(tr("CONCEAL.NETWORK TESTNET"));
+    }
     m_ui->m_titleIcon->setPixmap(QPixmap(":/icons/icon-home"));
     m_ui->overviewBox->raise();
     m_ui->lm_newTransferButton->show();
