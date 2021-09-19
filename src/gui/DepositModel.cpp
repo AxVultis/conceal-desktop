@@ -18,6 +18,7 @@
 #include "CurrencyAdapter.h"
 #include "NodeAdapter.h"
 #include "WalletAdapter.h"
+#include "Settings.h"
 
 Q_DECLARE_METATYPE(CryptoNote::TransactionId)
 
@@ -198,15 +199,20 @@ QVariant DepositModel::getDisplayRole(const QModelIndex& _index) const {
     return unlockHeight > 0 ? unlockHeight - 1 : 0;
   }
 
-  case COLUMN_TYPE: {
+  case COLUMN_TYPE:
+  {
     quint32 term = _index.data(ROLE_DEPOSIT_TERM).value<quint32>();
-    if (term % 64800 == 0) {
+    if (term % 64800 == 0)
+    {
       return QString("Investment");
     }
-    if (term % 21900 == 0) {
+    if (term % 21900 == 0 || (Settings::instance().isTestnet() &&
+                              term % CryptoNote::parameters::TESTNET_DEPOSIT_MIN_TERM_V3))
+    {
       return QString("Deposit");
     }
-    if (term % 5040 == 0) {
+    if (term % 5040 == 0)
+    {
       return QString("Deposit");
     }
   }
