@@ -1,8 +1,8 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
 // Copyright (c) 2014-2017 XDN developers
-//  
 // Copyright (c) 2018 The Circle Foundation & Conceal Devs
-// Copyright (c) 2018-2020 Conceal Network & Conceal Devs
+// Copyright (c) 2018-2021 Conceal Network & Conceal Devs
+//
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,6 +20,7 @@
 #include "WalletLegacy/WalletLegacy.h"
 #include "Logging/LoggerManager.h"
 #include "System/Dispatcher.h"
+#include "Settings.h"
 
 namespace WalletGui {
 
@@ -130,7 +131,7 @@ public:
   }
 
   CryptoNote::IWalletLegacy* createWallet() override {
-    return new CryptoNote::WalletLegacy(m_currency, m_node, m_logger);
+    return new CryptoNote::WalletLegacy(m_currency, m_node, m_logger, Settings::instance().isTestnet());
   }
 
 private:
@@ -139,7 +140,7 @@ private:
   CryptoNote::NodeRpcProxy m_node;
   Logging::LoggerManager& m_logger;
 
-  void peerCountUpdated(size_t count) {
+  void peerCountUpdated(size_t count) override {
     m_callback.peerCountUpdated(*this, count);
   }
 
@@ -235,7 +236,7 @@ public:
   }
 
   CryptoNote::IWalletLegacy* createWallet() override {
-    return new CryptoNote::WalletLegacy(m_currency, m_node, m_loggerManager);
+    return new CryptoNote::WalletLegacy(m_currency, m_node, m_loggerManager, Settings::instance().isTestnet());
   }
 
 private:
