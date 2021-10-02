@@ -40,7 +40,7 @@ jobs:
         shell: powershell
         run: |
           Remove-Item cryptonote -Recurse -Force -ErrorAction Ignore
-          git clone https://github.com/ConcealNetwork/conceal-core.git -b testnet-2021-09 cryptonote
+          git clone https://github.com/AxVultis/conceal-core.git -b testnet-2021-09 cryptonote
 
       - name: Pre-build setup
         shell: powershell
@@ -126,7 +126,7 @@ jobs:
       - name: Clone conceal-core
         run: |
           rm -rf cryptonote
-          git clone https://github.com/ConcealNetwork/conceal-core.git -b testnet-2021-09 cryptonote
+          git clone https://github.com/AxVultis/conceal-core.git -b testnet-2021-09 cryptonote
 
       - name: Build
         id: build
@@ -173,7 +173,7 @@ jobs:
       - name: Clone conceal-core
         run: |
           rm -rf cryptonote
-          git clone https://github.com/ConcealNetwork/conceal-core.git -b testnet-2021-09 cryptonote
+          git clone https://github.com/AxVultis/conceal-core.git -b testnet-2021-09 cryptonote
 
       - name: Build
         id: build
@@ -214,7 +214,7 @@ jobs:
       - name: Clone conceal-core
         run: |
           rm -rf cryptonote
-          git clone https://github.com/ConcealNetwork/conceal-core.git -b testnet-2021-09 cryptonote
+          git clone https://github.com/AxVultis/conceal-core.git -b testnet-2021-09 cryptonote
 
       - name: Build
         id: build
@@ -259,7 +259,7 @@ jobs:
       - name: Clone conceal-core
         run: |
           rm -rf cryptonote
-          git clone https://github.com/ConcealNetwork/conceal-core.git -b testnet-2021-09 cryptonote
+          git clone https://github.com/AxVultis/conceal-core.git -b testnet-2021-09 cryptonote
 
       - name: Build
         id: build
