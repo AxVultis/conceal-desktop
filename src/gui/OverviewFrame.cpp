@@ -1339,13 +1339,18 @@ namespace WalletGui
       /* Add to the address book if a label is given */
       if ((!label.isEmpty()) && (m_ui->m_saveAddress->isChecked()))
       {
+        logger.log("Adding address to address book");
         if (isIntegrated == true)
         {
+          logger.log("integrated address");
           AddressBookModel::instance().addAddress(label, int_address, "");
+          logger.log("integrated address added");
         }
         else
         {
+          logger.log("address and paymentId");
           AddressBookModel::instance().addAddress(label, address, paymentIdString);
+          logger.log("address and paymentId added");
         }
       }
     }
