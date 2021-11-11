@@ -49,7 +49,7 @@ jobs:
           echo "::set-output name=ccx_ver::${ccx_ver}"
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v0.1.12
         with:
           files: ${{ steps.build.outputs.asset_path }}
           name: Conceal Desktop v${{ steps.build.outputs.ccx_ver }}
