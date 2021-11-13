@@ -59,6 +59,7 @@ public Q_SLOTS:
   void deleteABClicked();
   void payToABClicked();
   void dashboardClicked();
+  void messageToABClicked();
 
 protected:
   void resizeEvent(QResizeEvent *event) override;
@@ -192,7 +193,7 @@ private:
   Q_SLOT void exportCSV();
   Q_SLOT void unlockWallet();
   Q_SLOT void encryptWalletClicked();
-  Q_SLOT void stexClicked();
+  Q_SLOT void bitmartClicked();
   Q_SLOT void websiteClicked();
   Q_SLOT void tradeogreClicked();
   Q_SLOT void wikiClicked();
@@ -221,5 +222,6 @@ Q_SIGNALS:
   void payToSignal(const QModelIndex& _index);
   void notifySignal(const QString& message);
   void welcomeFrameSignal();
+  void messageToSignal(const QModelIndex& _index);
 };
 } // namespace WalletGui
