@@ -108,7 +108,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.build.outputs.release_name }}
-          path: ${{ steps.build.outputs.release_name }}
+          path: installer/windows
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
