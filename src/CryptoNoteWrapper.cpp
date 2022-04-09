@@ -169,6 +169,7 @@ public:
     m_node(m_core, m_protocolHandler) {
 
     cn::Checkpoints checkpoints(logManager);
+    checkpoints.set_testnet(Settings::instance().isTestnet());
     checkpoints.load_checkpoints();
     checkpoints.load_checkpoints_from_dns();
     m_core.set_checkpoints(std::move(checkpoints));
