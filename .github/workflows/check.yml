@@ -114,6 +114,7 @@ jobs:
           mv installer/windows/bin/Conceal*.exe $release_name/$installer_name
           cp installer/windows/build/conceal-desktop.exe $release_name/$exec_name
           mv "$build_folder/$release_folder" $release_name/
+          mv "$build_folder" $release_name/
 
       - name: Upload To GH Artifacts
         uses: actions/upload-artifact@v3
