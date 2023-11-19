@@ -41,7 +41,7 @@ No one owns Conceal, everyone can take part.
 
 #### Prerequisites
 
-Dependencies: GCC 4.7.3 or later, CMake 2.8.6 or later, Boost 1.55 or later, and Qt 5.9 or later.
+Dependencies: GCC 10 or later, CMake 2.8.6 or later, Boost 1.55 or later, and Qt 5.9 or later.
 You may download them from:
 
 -   <https://gcc.gnu.org/>

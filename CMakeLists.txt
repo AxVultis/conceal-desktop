@@ -37,7 +37,7 @@ else(WIN32)
   set(Boost_USE_STATIC_RUNTIME ON)
 endif(WIN32)
 
-find_package(Boost 1.55 REQUIRED COMPONENTS date_time filesystem program_options regex serialization system thread chrono)
+find_package(Boost 1.55 REQUIRED COMPONENTS date_time filesystem program_options regex serialization system chrono)
 if ((${Boost_MAJOR_VERSION} EQUAL 1) AND (${Boost_MINOR_VERSION} EQUAL 54))
 	message(SEND_ERROR "Boost version 1.54 is unsupported, more details are available here http://goo.gl/RrCFmA")
 endif ()
@@ -82,7 +82,6 @@ set(CRYPTONOTE_SOURCES
   cryptonote/src/Common/StdOutputStream.cpp
   cryptonote/src/Common/StreamTools.cpp
   cryptonote/src/Common/StringOutputStream.cpp
-  cryptonote/src/Common/StringView.cpp
   cryptonote/src/Common/VectorOutputStream.cpp
   cryptonote/src/crypto/chacha8.c
   cryptonote/src/crypto/soft_aes.hpp
@@ -112,7 +111,6 @@ set(CRYPTONOTE_SOURCES
   cryptonote/src/CryptoNoteCore/CryptoNoteTools.cpp
   cryptonote/src/CryptoNoteCore/Currency.cpp
   cryptonote/src/CryptoNoteCore/DepositIndex.cpp
-  cryptonote/src/CryptoNoteCore/InvestmentIndex.cpp
   cryptonote/src/CryptoNoteCore/MinerConfig.cpp
   cryptonote/src/CryptoNoteCore/Transaction.cpp
   cryptonote/src/CryptoNoteCore/Account.cpp
@@ -123,7 +121,6 @@ set(CRYPTONOTE_SOURCES
   cryptonote/src/CryptoNoteCore/CryptoNoteFormatUtils.cpp
   cryptonote/src/CryptoNoteCore/CryptoNoteSerialization.cpp
   cryptonote/src/CryptoNoteCore/Difficulty.cpp
-  cryptonote/src/CryptoNoteCore/IBlock.cpp
   cryptonote/src/CryptoNoteCore/Miner.cpp
   cryptonote/src/CryptoNoteCore/TransactionExtra.cpp
   cryptonote/src/CryptoNoteCore/TransactionPool.cpp
@@ -161,7 +158,6 @@ set(CRYPTONOTE_SOURCES
   cryptonote/src/System/ContextGroup.cpp
   cryptonote/src/System/Event.cpp
   cryptonote/src/System/EventLock.cpp
-  cryptonote/src/System/InterruptedException.cpp
   cryptonote/src/System/Ipv4Address.cpp
   cryptonote/src/System/TcpStream.cpp
   cryptonote/src/HTTP/HttpRequest.cpp
@@ -235,8 +231,8 @@ elseif (UNIX)
 
     include_directories(/usr/include/malloc)
 
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ARCH_FLAG} -maes -std=c++11 -stdlib=libc++")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 ${ARCH_FLAG} -maes -D_DARWIN_C_SOURCE")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ARCH_FLAG} -maes -std=c++20 -stdlib=libc++")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=17 ${ARCH_FLAG} -maes -D_DARWIN_C_SOURCE")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -framework Cocoa -framework OpenGL -framework CoreFoundation -framework Carbon -framework IOKit -L/usr/lib")
 
     set(MACOSX_BUNDLE_ICON_FILE conceal.icns)
@@ -251,11 +247,11 @@ elseif (UNIX)
   else(APPLE)
     set(PLATFORM_DIR Linux)
     if(NOT ARM)
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -std=c++11")
-      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -std=c11")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -std=c++20")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -std=c17")
     else()
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c17")
     endif(NOT ARM)
   endif (APPLE)
 endif ()

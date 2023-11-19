@@ -131,7 +131,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y qt5-default qttools5-dev qttools5-dev-tools libqt5charts5-dev libboost-all-dev openssl
+          sudo apt-get install -y qt5-default qttools5-dev qttools5-dev-tools libqt5charts5-dev libboost-all-dev openssl gcc-10 g++-10
 
       - name: Clone conceal-core
         run: |
@@ -145,7 +145,7 @@ jobs:
           ccx_version=${GITHUB_SHA::7}
 
           lrelease src/languages/*.ts
-          make -j2 build-release
+          CC=gcc-10 CXX=g++-10 make -j2 build-release
 
           echo "ccx_version=${ccx_version}" >> $GITHUB_OUTPUT
 
@@ -181,7 +181,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y qt5-default qttools5-dev qttools5-dev-tools libqt5charts5-dev libboost-all-dev
+          sudo apt-get install -y qt5-default qttools5-dev qttools5-dev-tools libqt5charts5-dev libboost-all-dev gcc-10 g++-10
 
       - name: Clone conceal-core
         run: |
@@ -196,7 +196,7 @@ jobs:
           release_name=ccx-desktop-ubuntu-2004-dev-"$ccx_version"
 
           lrelease src/languages/*.ts
-          make -j2 build-release
+          CC=gcc-10 CXX=g++-10 make -j2 build-release
           mkdir $release_name
           mkdir -p $release_name/icon
           mv build/release/conceal-desktop $release_name
@@ -256,7 +256,7 @@ jobs:
 
   build-macos:
     name: macOS
-    runs-on: macos-11
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@master
 

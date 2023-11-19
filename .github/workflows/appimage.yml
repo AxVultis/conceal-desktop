@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update -y
-          sudo apt install -y qt5-default qttools5-dev qttools5-dev-tools libqt5charts5-dev libboost-all-dev openssl
+          sudo apt install -y qt5-default qttools5-dev qttools5-dev-tools libqt5charts5-dev libboost-all-dev openssl gcc-10 g++-10
 
       - name: Clone conceal-core
         run: |
@@ -29,7 +29,7 @@ jobs:
           release_name=Conceal_Desktop-v"$ccx_version"-x86_64.AppImage
 
           lrelease src/languages/*.ts
-          make -j2 build-release
+          CC=gcc-10 CXX=g++-10 make -j2 build-release
 
           echo "ccx_version=${ccx_version}" >> $GITHUB_OUTPUT
           echo "release_name=${release_name}"  >> $GITHUB_OUTPUT

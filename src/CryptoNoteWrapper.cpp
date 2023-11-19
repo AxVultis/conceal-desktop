@@ -253,7 +253,7 @@ private:
   logging::LoggerManager& m_loggerManager;
   cn::CoreConfig m_coreConfig;
   cn::NetNodeConfig m_netNodeConfig;
-  cn::core m_core;
+  cn::Core m_core;
   cn::CryptoNoteProtocolHandler m_protocolHandler;
   cn::NodeServer m_nodeServer;
   cn::InProcessNode m_node;
