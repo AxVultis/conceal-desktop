@@ -232,7 +232,7 @@ elseif (UNIX)
     include_directories(/usr/include/malloc)
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ARCH_FLAG} -maes -std=c++20 -stdlib=libc++")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=17 ${ARCH_FLAG} -maes -D_DARWIN_C_SOURCE")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c17 ${ARCH_FLAG} -maes -D_DARWIN_C_SOURCE")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -framework Cocoa -framework OpenGL -framework CoreFoundation -framework Carbon -framework IOKit -L/usr/lib")
 
     set(MACOSX_BUNDLE_ICON_FILE conceal.icns)
